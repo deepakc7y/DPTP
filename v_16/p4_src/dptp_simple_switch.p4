@@ -178,19 +178,19 @@ control SwitchIngress(
         default_action = nop();
     }
 
-#ifdef LOGICAL_SWITCHES
-    virtSwitch() virt_switch;
-#endif // LOGICAL_SWITCHES
+    #ifdef LOGICAL_SWITCHES
+        virtSwitch() virt_switch;
+    #endif // LOGICAL_SWITCHES
 
     DptpNow() dptp_now;
     DptpIngress() dptp_ingress;
 
 
     apply {
-#ifdef LOGICAL_SWITCHES    
+    #ifdef LOGICAL_SWITCHES    
         virt_switch.apply(hdr.dptp, meta.dptp_mdata, hdr.ethernet.srcAddr, hdr.ethernet.dstAddr, 
             hdr.ethernet.etherType, ig_intr_md.ingress_port, ig_intr_md_for_dprsr);
-#endif // LOGICAL SWITCHES        
+    #endif // LOGICAL SWITCHES        
         dptp_now.apply(meta.dptp_mdata, ig_intr_md_from_parser_aux);
         // Current Global time is now available here.
         dptp_ingress.apply(hdr.dptp, hdr.ethernet.srcAddr, hdr.ethernet.dstAddr, 
