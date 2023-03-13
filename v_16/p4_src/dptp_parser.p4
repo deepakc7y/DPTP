@@ -107,9 +107,9 @@ parser DptpBridgeParser (
 
     state start {
         pkt.extract(bridge);
-#ifdef LOGICAL_SWITCHES
-        dptp_meta.switch_id = bridge.switch_id;
-#endif
+    #ifdef LOGICAL_SWITCHES
+            dptp_meta.switch_id = bridge.switch_id;
+    #endif
         transition accept;
     }
 }

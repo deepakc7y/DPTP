@@ -21,9 +21,9 @@ header dptp_t {
 }
 
 header dptp_bridge_t {
-#ifdef LOGICAL_SWITCHES
-    bit<8> switch_id;
-#endif // LOGICAL_SWITCHES
+    #ifdef LOGICAL_SWITCHES
+        bit<8> switch_id;
+    #endif // LOGICAL_SWITCHES
     PortId_t ingress_port;
     bit<7> _pad0;
 }
