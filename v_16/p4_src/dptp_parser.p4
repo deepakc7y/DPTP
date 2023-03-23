@@ -1,10 +1,7 @@
 /*******************************************************************************
  * DPTP : Parser Declaration
- *
- *
- *
- *
  ******************************************************************************/
+
 #ifndef _DPTP_PARSER
 #define _DPTP_PARSER
 
@@ -23,7 +20,6 @@ struct followup_digest_t {
     bit<48> mac_addr;
     bit<32> timestamp;
 }
-
 
 struct reply_digest_t {
     bit<8>  switch_id;
